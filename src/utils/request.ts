@@ -3,7 +3,6 @@
  */
 import axios, { AxiosRequestConfig, AxiosResponse } from "axios";
 import { Notify } from "vant";
-console.log(process.env);
 const service = axios.create({
   baseURL: process.env.VUE_APP_BASE_URL, // url = base url + request url
   timeout: 10000,
