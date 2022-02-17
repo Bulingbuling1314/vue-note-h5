@@ -12,10 +12,10 @@
         @click="editLabel(item.id)"
       >
         <div class="label_item_top">
-          <span>{{ item.name || "-" }}</span>
+          <span>{{ item.title || "-" }}</span>
           <span>{{ item.date || "-" }}</span>
         </div>
-        <div class="label_item_content">
+        <div class="label_item_content esptext">
           {{ item.content || "-" }}
         </div>
       </div>
@@ -35,7 +35,15 @@ export default {
     });
     const list = () => {
       getNoteList({}).then((res) => {
-        label.list = res.data;
+        label.list = res.data.map((item: { date: string | number | Date }) => {
+          if (item.date) {
+            item.date = `${new Date(item.date).getFullYear()}-${new Date(
+              item.date
+            ).getMonth()}-${new Date(item.date).getDay()}`;
+          }
+          return item;
+        });
+        console.log(label.list);
       });
     };
     onMounted(() => {
@@ -93,8 +101,9 @@ export default {
     }
     .label_item_content {
       text-indent: 28px;
-      padding: 8px;
+      padding: 8px 8px 2px;
       text-align: left;
+      line-height: 21px;
     }
   }
   .item_add {

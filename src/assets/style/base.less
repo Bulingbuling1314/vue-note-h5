@@ -9,3 +9,18 @@ html, body {
 * {
   box-sizing: border-box;
 }
+// 三行省略号
+.esptext{
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor:pointer;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+
+}
+.esptext:hover{
+    color:#00A3A6;
+    transition: 0.8s;
+}
