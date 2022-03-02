@@ -28,6 +28,7 @@ import { onMounted, reactive } from "vue";
 import { useRouter } from "vue-router";
 import { getNoteList, removeById } from "@/api/index";
 import { Dialog, Notify } from "vant";
+import moment from "moment";
 export default {
   setup() {
     const label = reactive({
@@ -37,9 +38,7 @@ export default {
       getNoteList({}).then((res) => {
         label.list = res.data.map((item: { date: string | number | Date }) => {
           if (item.date) {
-            item.date = `${new Date(item.date).getFullYear()}-${new Date(
-              item.date
-            ).getMonth()}-${new Date(item.date).getDay()}`;
+            item.date = moment(item.date).format("YYYY-MM-DD") + "";
           }
           return item;
         });

@@ -33,7 +33,8 @@ module.exports = {
     proxy: {
       // string | Object 解决跨域问题
       "/api": {
-        target: "http://www.liubingbing.xyz:8089/api", // 对应自己的 跨域地址 即请求的后端地址
+        target: "http://localhost:8089/api", // 对应自己的 跨域地址 即请求的后端地址
+        // target: "http://www.liubingbing.xyz:8089/api", // 对应自己的 跨域地址 即请求的后端地址
         changeOrigin: true,
         ws: true,
         pathRewrite: {
